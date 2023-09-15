@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="node_modules/trumbowyg/dist/ui/trumbowyg.min.css">
+    <link rel="stylesheet" href="node_modules/trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.min.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Formulaire d'ajout de cours</title>
 </head>
@@ -31,10 +32,24 @@
 <script src="node_modules/jquery/dist/jquery.min.js" ></script>
 <script src="node_modules/trumbowyg/dist/trumbowyg.min.js"></script>
 <script src="node_modules/trumbowyg/dist/langs/fr.min.js"></script>
+<script src="node_modules/trumbowyg/dist/plugins/colors/trumbowyg.colors.min.js"></script>
 <script>
     $(document).ready( function() {
         $('#wys').trumbowyg({
-            
+            btns: [
+                    ['viewHTML'],
+                    ['undo', 'redo'], // Only supported in Blink browsers
+                    ['formatting'],
+                    ['strong', 'em', 'del'],
+                    ['superscript', 'subscript'],
+                    ['link'],
+                    ['insertImage'],
+                    ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                    ['unorderedList', 'orderedList'],
+                    ['horizontalRule'],
+                    ['removeformat'],
+                    ['fullscreen'],
+                    ['foreColor', 'backColor']]   
         });
     })
 

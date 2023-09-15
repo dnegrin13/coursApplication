@@ -1,0 +1,23 @@
+label, input {
+    display: block;
+    margin-top: 10px;
+}
+
+.label-textarea {
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+@media (prefers-color-scheme:dark){
+    body {
+        color: white;
+        background-color: black;
+    }
+}
+
+@media (prefers-color-scheme:light){
+    body {
+        color: black;
+        background-color: white;
+    }
+}

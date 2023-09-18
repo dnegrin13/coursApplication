@@ -1,3 +1,16 @@
+<?php
+      include 'pdo.php';
+
+      if(isset($_GET['id'])) {
+          $id = $_GET['id'];
+          $sql = 'SELECT * FROM lessons WHERE id_lesson=?';
+          $stmt = $pdo->prepare($sql);
+          $stmt->execute([$id]);
+          $lesson = $stmt->fetch(PDO::FETCH_ASSOC);
+      }
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,20 +21,37 @@
     <link rel="stylesheet" href="node_modules/prismjs/themes/prism.css">
     <link rel="stylesheet" href="node_modules/trumbowyg/dist/plugins/highlight/ui/trumbowyg.highlight.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Formulaire d'ajout de cours</title>
+    <title>Formulaire de modification de cours</title>
 </head>
 <body>
-    <h1>Formulaire d'ajout de cours</h1>
+    <h1>Formulaire de modification de cours</h1>
 
     <a href="index.php"><-Retour à la liste des leçons</a>
 
-    <form action="add_lesson.php" method="post">
+    <form action="update_lesson.php" method="post">
 
         <label for="title">Titre</label>
-        <input type="text" name="title">
+        <input type="text" name="title" value="<?= $lesson['title']?>">
 
         <label for="category">catégorie</label>
         <select name="category">
+            <?php
+                $category_array = [
+                    "html"=> "HTML/CSS",
+                    "javascript" => "Javacript",
+                    "php" => "PHP"
+                ];
+                foreach($category_array as $value => $category){
+                    if($value == $lesson['category']){
+                        echo "<option selected value='$value'>$category</option>";
+                    }else{
+                    echo "<option value='$value'>$category</option>";
+                    
+                    }
+            
+                }
+            
+            ?>
             <option value="">veuillez choisir une catégorie</option>
             <option value="html">HTML/CSS</option>
             <option value="javascript">JavaScript</option>
@@ -29,7 +59,8 @@
         </select>
 
         <label for="content" class="label-textarea">Contenu de la leçon</label>
-        <textarea name="content"  cols="200" rows="50" id="wys"></textarea>
+        <textarea name="content"  cols="200" rows="50" id="wys"><?= $lesson['content']?></textarea>
+        <input type="hidden" name="id" value="<?= $lesson['id_lesson']?>">
         <input type="submit" value="Ajouter leçon">
     </form>
 

@@ -1,0 +1,64 @@
+HTML
+
+
+Histoire:
+
+Le HTML est initialement dérivé d'un language de description à balises: le SGML (Standard Generalized Markup Language).
+
+Il a été inventé par Tim Berners-Lee dans le année 1990.
+
+
+        HTML 1.0
+
+    -Apparu après l'année 1990.
+
+    -Version simple et inépendante qui permet de faire une structure de page trés basique.De plus le langage étant hypertextuel, il permet de passer d'une page à une autre à l'aide d'hyperliens
+
+    -Obseléte de nos jours.
+
+    HTML 2.0
+
+    -Validation en septembre 1995 par le W3C
+
+    -Apparition de nouveau navigateurs engendrant l'apparition de nouvelles balises.
+
+    -Nouvelles balises de structure pour le document (les entêtes, lignes de titres, differents niveau de titre, etc) ainsi l'ajout de la balise image ( qui supporte le formats xbn et le gif).
+
+    -insertion des tableaux et formulaires.
+
+
+    HTML 3.0
+
+    -NetScape Navigator introduit de nouvelles balises ainsi que de nouvelles propriétés dans le navigateur.
+
+    -Cela a posé plusieurw problèmes de compatibilités avec les autres navigateurs tentant de reproduire ses propriétés mais sans succés
+
+    -Les pages web crées avec Netscape étaient bien affichées sur leur navigateur mais pas les autres.
+
+    -HTML 3.0 n'a pas rencontré le succés escompté car les navigateurs n'étaient pas assez rapides dans l'implémentations des nouveautés de la version 3.0.
+
+    HTML 3.2
+
+    -Standardisé en 1996 par le W3C
+
+    -Le HTML 3.2 aussi appelé WILBUR, a introduit des nouveautés pour les polices et les images.
+
+    -Mais la grande nouveauté de cette version reste l'introduction de JavaScript.
+
+    HTML 4.0
+
+    -Version aussi appelé COUGAR, devenu un standard du W3C en 1998.
+
+    -Ajout des balises script et frame.
+
+    -Apparition du DOCTYPE
+
+    -Apparition des balises en display block et inline.
+
+    HTML 5.0
+
+    -Compatibilité avec Android, linux, MacOS
+
+    -Sortie en version initiale en 2010
+
+    -Sortie en version finale en 2014

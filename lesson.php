@@ -38,7 +38,7 @@
 <body>
     
     <h1><?= $lesson['title']?></h1>
-
+    <a href="index.php"><-Retour à la liste des leçons</a>
     <h3><i>Leçon ajoutée le : <?=objet_date_format($date)?></i></h3>
     <?php
         if(isset($lesson['modify_at'])){

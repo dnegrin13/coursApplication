@@ -10,7 +10,8 @@ if (!empty($_POST['title'])
     $sql = "UPDATE lessons SET title=?, category=?, content=?, modify_at=? WHERE id_lesson=?";
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$_POST['title'], 
+    $stmt->execute([
+                $_POST['title'], 
                 $_POST['category'], 
                 $_POST['content'],
                 $modify_at,

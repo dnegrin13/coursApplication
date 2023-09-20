@@ -1,0 +1,269 @@
+CSS( Cascading Style Sheet ) est un langage de description principal du WEB et standardisé par le W3C.
+
+W3C -> WOLRD WIDE WEB CONSORTIUM est un organisme de standardisation à but non lucratif, fondé en octobre 1994 chargé de promouvoir la compatibilité des technologies du WEB ( HTML, CSS, PNG, SVG etc...)
+
+Il fonctionne comme un consortium international, il compte 452 membres au 1er octobre 2021
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8" />
+      <title>Titre de la page affiché dans la barre du navigateur</title>
+      <link rel="stylesheet" type="text/css" href="style.css" />
+   </head>
+
+   <body>
+
+   </body>
+</html>
+
+
+Grâce à la balise <link>, les instructions codées dans le fichier CSS s'appliqueront bien à la page HTML.
+Structure :
+
+
+- Sélécteur (rouge): Indique le ou les éléments sur lesquels la mise en forme va s'appliquer.
+
+-Propriété(bleu): Précise la propriété CSS
+
+-Valeur(vert) : Détermine la valeur de la propriété à appliquer sur le sélecteur.
+
+body {
+  color: red;
+  background: white;
+  border: 1px green solid
+}
+
+
+Dans cette exemple: la balise body reçoit la propriété "color" qui va changer la couleur des écritures en rouge, ensuite nous avons "background" qui va changer la couleur du fond en blanc, et "border" qui ajoutera une bordure au body de 1pixel d'épaisseur en vert et en ligne continue.
+Les commentaires :
+
+Comme en HTML et dans tous les langages, le CSS permet les commentaires. Ces derniers sont utilisés pour expliquer le code.
+
+Un commentaire commence par "/* " et se termine par "*/" et peuvent couvrir plusieurs lignes.
+
+/* Mon premier commentaire CSS en une seule ligne /*
+h2, #super-p, .mega-p {
+  color: red;
+}
+
+/*
+   Mon premier commentaire CSS
+   sur deux lignes
+*/
+
+
+
+SÉLECTEURS
+Le sélecteurs universel
+
+
+* {
+color: blue;
+}
+
+
+Le sélecteur universel cible tous les éléments de la page
+
+le sélecteur de classe  :
+
+Le sélecteur de classe permet de ciblé les balises ayant l'attribut "class=""
+
+.mega-p {
+  color: yellow;
+}
+
+
+On utilise le . pour cibler le ou les l’élément qui on la classe.
+Le sélecteur d'identifiant :
+
+Contrairement à la classe il existe sur la page qu'UN seul identifiant de même nom.
+
+Il permet de cibler les balises qui ont l'attribut "id=" "
+
+#super-p {
+  color: pink;
+}
+
+On utilise le # pour cibler l'élément qui a l'id
+
+Le sélecteur de groupe :
+
+Vous n"êtes pas obliger de faire une déclaration par élément. Il est même préférable de regrouper les sélecteurs pour minimiser le code.
+
+h2, #super-p, .mega-p {
+  color: red;
+}
+
+Pour regrouper les sélecteurs, séparez chaque sélecteur par une virgule ",".
+LES COMBINATEURS :
+Le sélecteur d'éléments descendants :
+
+Les combinateurs permettent de combiner différent type de sélecteurs pour en former un nouveau plus précis, on peut donc inclure en chaque sélecteur en combinateur.
+
+Il existe 4 grands types mais nous nous focaliserons uniquement sur celui qui permet de sélectionner des enfants, à savoir le sélecteur "Espace".
+
+#super p {
+   color: red;
+}
+
+Dans cette exemple toutes les balises <p> ayant pour parent l'élément #super, seront ciblés.
+
+
+Le sélecteur d'éléments enfants :
+
+Le combinateur ">" permet de sélectionner les éléments qui sont des enfants directs d'un élément donné.
+
+ul > li {
+   color: blue;
+}
+
+Dans cette exemple tout les éléments <li> qui sont directement situés sous un élément <ul> seront écrit en bleu.
+
+
+Le sélecteur d'éléments voisins direct :
+
+Le combinateur "+" permet de sélectionner les éléments qui suivent immédiatement un élément donné.
+
+div + p {
+color: chartreuse;
+}
+
+Dans cette exemple les premier éléments voisin des balises <div> qui sont des balises <p> seront colorié en couleur chartreuse.
+
+Le sélecteur d'éléments voisins :
+
+Le combinateur "~" permet de séléctionner tous les éléments voisins qui ont le même parents
+
+p ~ span {
+font-size : 2em;
+}
+
+Dans cette exemple les éléments <span> qui suivent ou non un élément <p> seront écrit deux fois plus grand.
+LES PSEUDO-ELEMENTS :
+
+Structure :
+Le sélecteur ::first-line :
+
+sélecteur::pseudo-élément {
+   propriété: valeur;
+}
+
+Ce sélecteur va colorier la première ligne écrite dans UNE balise <p>.
+
+
+Le sélecteur ::first-letter :
+
+/* Sélectionne la première lettre */
+/* d'un élément <p> */
+p::first-letter {
+  color: red;
+  font-size: 130%;
+}
+
+Le sélecteur ::before et ::after  :
+
+/* Ajoute une flèche après les liens */
+a:after {
+  content: "→";
+}
+
+
+LES PSEUDO-CLASSE :
+
+Structure :
+
+sélecteur:pseudo-classe {
+ propriété: valeur;
+}
+
+Le sélecteur :first-child : 
+
+/* Cible n'importe quel élément <p> qui est */
+/* le premier fils de son élément parent */
+p:first-child {
+  color: lime;
+  background-color: black;
+}
+
+Le sélecteur :first-of-type :
+
+/* Cible le premier élément <p> d'un type donné */
+/* parmi ses éléments voisins */
+p:first-of-type {
+  color: red;
+}
+
+<div>
+  <span>Voici le premier span !</span>
+  <span>Un autre span, pas le premier.</span>
+  <span>Quid de cet <em>élément imbriqué </em>?</span>
+  <b>Un autre type d'élément.</b>
+  <span>Ce type là est déjà apparu.</span>
+</div>
+
+div :first-of-type {
+background-color: lime;
+}
+
+
+
+
+Le sélecteur :nth-child() 
+
+
+/* Cible les éléments en fonction de leur position dans */
+/* le document : ici le 4e, 8e, 16e, 20e, etc. quel que */
+/* soit le type de l'élément */
+body :nth-child(4n) {
+  background-color: lime;
+}
+
+
+Le sélecteur :hover
+
+/* Cible n'importe quel élément <a> lorsque  */
+/* celui-ci est survolé */
+a:hover {
+  background-color: gold;
+}
+
+Le sélecteur :focus
+
+/* Cible n'importe quel élément <input> */
+/* uniquement lorsqu'il a le focus */
+input:focus {
+  color: red;
+}
+
+
+Le sélecteur :visited
+
+a:visited {
+  color: #4b2f89;
+}
+
+Le sélecteur :active
+
+/* ne cible <a> que lorsqu'il est activé */
+/* par exemple quand on clique dessus */
+a:active {
+  color: red;
+}
+
+
+LES PRIORITES :
+
+Sélecteur d'identifiant > sélecteur de classe > sélecteur d'élément ou simple > sélecteur universel.
+
+
+
+
+
+
+
+
+
+
+
+

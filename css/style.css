@@ -18,6 +18,78 @@ label, input {
 @media (prefers-color-scheme:light){
     body {
         color: black;
-        background-color: white;
+        background-color: #553838;
     }
+}
+ul {
+    list-style-type: none;
+}
+header {
+    width: 100%;
+    height: 10vh;
+    background-color: #23B5D3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contenerRetAjoutlecons {
+    width: 100%;
+    height: 8vh;
+    background-color: lightslategray;
+    margin-top: 7px;
+}
+.rechercher {
+    display: flex;
+    color: white;
+    margin-left: 10%;
+    margin-right: 3px;
+}
+label, input {
+    font-size: 2em;
+}   
+.lecons {
+    font-size: 2em;
+}
+.AjoutLecons {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    /* background-color: aqua; */
+    margin-left: 20vw;
+}
+
+.contenerLecons {
+    width: 100%;
+    height: 65vh;
+    /* background-color: orange; */
+    display: flex;
+    flex-direction: row;
+    margin-top: 7px;
+}
+.HTML-CSS {
+    height: 100vh;
+    width: 33vw;
+    background-color: #D9D9D9;
+    margin-right: 7px;
+    text-align: center;
+}
+.horaire {
+    height: 97vh;
+    width: 33vw;
+    background-color: #D9D9D9;
+    margin-right: 7px;
+    text-align: center; 
+}
+.information {
+    height: 97vh;
+    width: 33vw;
+    background-color: #D9D9D9;
+    margin-right: 7px;
+    text-align: center;
+}
+footer {
+    width: 100%;
+    height: 10vh;
+    background-color: #2EC0F9;
+    margin-top: 5px;
 }

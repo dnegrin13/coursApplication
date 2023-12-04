@@ -7,6 +7,23 @@
     <title>Liste des cours</title>
 </head>
 <body>
+    
+    <form action="add_lesson.php" method="post">
+
+    <label for="title">Titre</label>
+    <input type="text" name="title">
+
+    <label for="category">catégorie</label>
+    <select name="category">
+        <option value="">veuillez choisir une catégorie</option>
+        <option value="html">HTML/CSS</option>
+        <option value="javascript">JavaScript</option>
+        <option value="php">PHP</option>
+    </select>
+
+    <input type="hidden" name="content" value="">
+    <input type="submit" value="Ajouter leçon">
+    </form>
     <header>
         <h1>Liste des cours</h1>
     </header>
@@ -15,7 +32,7 @@
                 <label for="rechercher">Rechercher</label>
                 <input type="text" name="rechercher" id="rechercher">
             <div class="AjoutLecons">
-                <a class="lecons" href="form_add_lesson.php">Ajouter une leçon</a>
+                <a class="lecons" href="form_update_lesson.php">Ajouter une leçon</a>
             </div>
             </div>
         </div>
@@ -37,6 +54,7 @@
        
             <div class="sommaire">Sommaire
                     <?php
+                        include_once "message.php";
                         include "pdo.php";
 
                         $sql = "SELECT * FROM lessons";
@@ -44,6 +62,7 @@
                         $lessons = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         $count = $stmt->rowCount();
                     ?>
+
                     <ul>
                         <?php
 
@@ -65,7 +84,6 @@
         </div>       
     </div>
     <footer></footer>    
-
 
 </body>
 </html>

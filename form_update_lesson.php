@@ -26,6 +26,7 @@ if (isset($_GET['id'])) {
 </head>
 <body>
     <h1>Formulaire de modification de cours</h1>
+    <?php include_once "message.php"?>
     <a href="index.php">Retour à la liste des leçons</a>
     <form action="update_lesson.php" method="post">
 
@@ -95,6 +96,38 @@ if (isset($_GET['id'])) {
                 ]
             });
         });
+
+        $('#wys').on("tbwchange", function(e){
+            console.log(e.target.value);
+            // e.target.value récupère ce que l'utilisateur tape dans son textarea
+            let content = e.target.value;
+
+            // Ici on récupère l'URL à partir de ? (en fait du GET)
+            const queryString = window.location.search;
+            const urlParam = new URLSearchParams(queryString);
+            // Ici on recupère l'id de l'Url
+            const id = urlParam.get("id");
+
+            const formData = new FormData();
+            formData.append("id", id);
+            formData.append("content", content);
+
+            const data = {
+                method: "POST",
+                // Transforme le texte ecrit dans le textarea en Json mais en chaine de caratère pour faciliter l'envoie des données
+                body: formData,
+            }
+
+            fetch('update.lesson.php', data)
+            .then(response => response.json())
+            .then(dataResponse => {
+                console.log(dataResponse)
+            })
+        })
+
+
+
+
     </script>
 </body>
 </html>

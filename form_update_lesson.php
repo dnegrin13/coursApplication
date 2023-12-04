@@ -25,16 +25,17 @@ if (isset($_GET['id'])) {
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Formulaire de modification de cours</h1>
+    <h1 id="mainTitle"><?= htmlentities($lesson['title']) ?></h1>
     <?php include_once "message.php"?>
     <a href="index.php">Retour à la liste des leçons</a>
+
     <form action="update_lesson.php" method="post">
 
         <label for="title">Titre</label>
-        <input type="text" name="title" value="<?= htmlspecialchars($lesson['title']) ?>">
+        <input type="text" name="title" id="title" value="<?= $lesson['title'] ?>">
 
         <label for="category">Catégorie</label>
-        <select name="category">
+        <select name="category" id="category">
             <?php
             $category_array = [
                 "html" => "HTML/CSS",
@@ -52,10 +53,6 @@ if (isset($_GET['id'])) {
 
         <label for="content">Leçon</label>
         <textarea name="content" id="wys" cols="250" rows="10"><?= htmlspecialchars($lesson['content']) ?></textarea>
-
-        <input type="hidden" name="id" value="<?= $id ?>">
-        <input type="submit" value="Modifier la leçon">
-
     </form>
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
@@ -125,7 +122,63 @@ if (isset($_GET['id'])) {
             })
         })
 
+        const title = document.getElementById('title');
+        const mainTitle = document.getElementById('mainTitle');
 
+        title.addEventListener('input', function(e){
+            let t = e.target.value;
+            mainTitle.innerHTML = t;
+
+            // Ici on récupère l'URL à partir de ? (en fait du GET)
+            const queryString = window.location.search;
+            const urlParam = new URLSearchParams(queryString);
+            // Ici on recupère l'id de l'Url
+            const id = urlParam.get("id");
+
+            const formData = new FormData();
+            formData.append("id", id);
+            formData.append("title", t);
+
+            const data = {
+                method: "POST",
+                // Transforme le texte ecrit dans le textarea en Json mais en chaine de caratère pour faciliter l'envoie des données
+                body: formData,
+            }
+
+            fetch('update.lesson.php', data)
+            .then(response => response.json())
+            .then(dataResponse => {
+                console.log(dataResponse)
+            })
+        })
+
+        const category = document.getElementById('category');
+
+        title.addEventListener('change', function(e){
+            let c = e.target.value;
+
+            // Ici on récupère l'URL à partir de ? (en fait du GET)
+            const queryString = window.location.search;
+            const urlParam = new URLSearchParams(queryString);
+            // Ici on recupère l'id de l'Url
+            const id = urlParam.get("id");
+
+            const formData = new FormData();
+            formData.append("id", id);
+            formData.append("category", c);
+
+            const data = {
+                method: "POST",
+                // Transforme le texte ecrit dans le textarea en Json mais en chaine de caratère pour faciliter l'envoie des données
+                body: formData,
+            }
+
+            fetch('update.lesson.php', data)
+            .then(response => response.json())
+            .then(dataResponse => {
+                console.log(dataResponse)
+            })
+        })
 
 
     </script>
